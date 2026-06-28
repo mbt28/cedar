@@ -1209,7 +1209,7 @@ static int cedardev_mmap(struct file *filp, struct vm_area_struct *vma)
 	temp_pfn = cedar_devp->phy_addr >> 12;
 
 	/* Set reserved and I/O flag for the area. */
-	vma->vm_flags |= /*VM_RESERVED | */ VM_IO;
+	vm_flags_set(vma, /*VM_RESERVED | */ VM_IO);
 	/* Select uncached access. */
 	vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
 
@@ -1483,7 +1483,7 @@ static int cedardev_init(struct platform_device *pdev)
 	if (ret) {
 		dev_warn(cedar_devp->platform_dev, "Err:%d add cedardev", ret);
 	}
-	cedar_devp->class = class_create(THIS_MODULE, "cedar_dev");
+	cedar_devp->class = class_create("cedar_dev");
 	cedar_devp->dev = device_create(cedar_devp->class, NULL, devno, NULL,
 					"cedar_dev");
 
