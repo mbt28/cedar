@@ -1632,6 +1632,7 @@ module_exit(sunxi_cedar_exit);
 
 MODULE_AUTHOR("Soft-Reuuimlla");
 MODULE_DESCRIPTION("User mode CEDAR device interface");
+MODULE_IMPORT_NS(DMA_BUF);
 MODULE_LICENSE("GPL");
 MODULE_VERSION(DRV_VERSION);
 MODULE_ALIAS("platform:cedarx-sunxi");
